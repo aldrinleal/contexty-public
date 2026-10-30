@@ -219,5 +219,7 @@ make reset    # removes data-*/, ./data/ and contexty.db
   that end up transcribed from their own subtitles.
 - **S3 sync is off by default.** Turning it on needs the AWS CLI
   credentials in your environment and a bucket you own.
-- No license file has been chosen yet — all rights reserved until one is
-  added.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
