@@ -32,7 +32,8 @@
     "tests/test_jobstore.py": "bb06ee5193ede08e519535f8d7ecbd0c2a54fccf6b5e2958a626a837b23898af",
     "tests/test_s3sync.py": "304aad3a51c64878ba9c9f9164bc0e9bd63e4392cf632286f120c47632a98fcd",
     "tests/test_subtitles.py": "7cf73770860e04d347edc9f1592383cd6bf3df1107d1a4e65eb7dc427f064959",
-    "tests/test_transcriber.py": "2e1c813e3efb759484c3dfc78e114ebd3b61e5bb31762c20bd29f35758abec2e"
+    "tests/test_transcriber.py": "2e1c813e3efb759484c3dfc78e114ebd3b61e5bb31762c20bd29f35758abec2e",
+    "video-summary/SKILL.md": "164fddd7a8deb757a7622d201d22e9ca39dcd42e94661beb340f2e59eae654d4"
   },
   "source_commit": "a4a63ccf54acd376437e1121e3cacb4db3cab2cc",
   "source_dirty": false,
