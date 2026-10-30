@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+yt-dlp = "*"
+assemblyai = "*"
+# Pinned <1.0 — assemblyai's SDK (as of 0.64.x) calls httpx._client.USER_AGENT,
+# which httpx 1.0 prereleases dropped. Without this pin + allow_prereleases
+# off, pipenv resolves the 1.0.dev prerelease and submit() breaks at runtime
+# with AttributeError: module 'httpx._client' has no attribute 'USER_AGENT'.
+httpx = "<1.0"
+pydantic = "*"
+pydantic-settings = "*"
+python-dotenv = "*"
+fastapi = "*"
+uvicorn = "*"
+# Runtime dep — app/s3sync.py shells out to `aws s3 sync` rather than
+# hand-rolling PutObject calls.
+awscli = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+black = "*"
+isort = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.14"

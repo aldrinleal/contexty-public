@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.venv/
+Pipfile.lock.bak
+
+# local dev output
+data-*/
+
+# secrets
+.env
+.env.*
+!.env.example
+.secrets
+cookies.txt
+
+# build artifacts
+requirements.txt
+*.zip
+.aws-sam/
+.serverless/
+.image-digest
