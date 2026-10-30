@@ -27,8 +27,33 @@ It runs two ways off the same pipeline code (`app/pipeline.py`):
    fetch the generated files. Jobs run in a small in-process thread pool;
    no queue or broker.
 
-> This is the public edition of a private project. It documents local
-> installation only.
+> **Note:** this repository is an automated export of another, private
+> repository. It documents local installation only. Some details (internal
+> docs, deployment, operational notes) were deliberately left out, so parts
+> may be missing or under-explained; issues pointing them out are welcome.
+
+## Topology
+
+```mermaid
+flowchart LR
+    user["User"] --> cli["CLI<br/>main.py"]
+    client["HTTP client<br/>(curl, agents)"] -->|"Bearer token"| api["FastAPI<br/>app/api.py"]
+    api --> pool["Thread pool"]
+    cli --> pipeline["Pipeline<br/>app/pipeline.py"]
+    pool --> pipeline
+    api <--> db[("sqlite<br/>dedup + history")]
+    cli <--> db
+    pipeline --> ytdlp["yt-dlp + ffmpeg"]
+    ytdlp --> sites["Video sites<br/>(YouTube, ...)"]
+    pipeline -.->|"no subtitles"| aai["AssemblyAI API"]
+    pipeline --> out[("data-[ID]/<br/>Markdown + JSON")]
+    pipeline -.->|"optional, off by default"| s3[("S3 bucket")]
+    api -->|"GET /jobs/{id}/files"| out
+```
+
+The CLI and the API share the same pipeline. Solid edges are always used;
+dashed edges are a fallback (AssemblyAI, only when a video has no subtitles
+of its own) or opt-in (S3 copy).
 
 ## Prerequisites
 
